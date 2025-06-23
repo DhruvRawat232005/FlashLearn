@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>📊 Learning Dashboard</h2>
+
+{% if stats %}
+<table class="stat-table">
+  <tr>
+    <th>Tag</th>
+    <th>Total</th>
+    <th>Correct</th>
+    <th>Accuracy</th>
+  </tr>
+  {% for stat in stats %}
+  <tr>
+    <td>{{ stat.tag }}</td>
+    <td>{{ stat.total }}</td>
+    <td>{{ stat.correct }}</td>
+    <td>{{ stat.accuracy }}%</td>
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+<p>No learning data yet.</p>
+{% endif %}
+{% endblock %}

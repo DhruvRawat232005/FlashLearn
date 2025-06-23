@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>🧠 Practice Mode</h2>
+
+{% if cards %}
+<div class="learn-box">
+  <div class="flashcard" id="learnCard">
+    <div class="front" onclick="flipCard()">
+      <p id="questionText">{{ cards[0].question }}</p>
+    </div>
+    <div class="back" onclick="flipCard()">
+      <p id="answerText">{{ cards[0].answer }}</p>
+    </div>
+  </div>
+
+  <div class="learn-controls">
+    <button onclick="markCorrect()">✔️ I Knew It</button>
+    <button onclick="markWrong()">❌ I Forgot</button>
+    <button onclick="nextCard()">➡️ Next</button>
+  </div>
+
+  <p id="progress">Card 1 of {{ cards|length }}</p>
+</div>
+{% else %}
+<p>No flashcards to learn yet. <a href="{{ url_for('create') }}">Create some</a>!</p>
+{% endif %}
+{% endblock %}

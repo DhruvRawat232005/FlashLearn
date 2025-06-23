@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>➕ Create New Flashcard</h2>
+<form method="POST" action="{{ url_for('create') }}" class="flash-form">
+  <label>Question:</label>
+  <input type="text" name="question" required />
+
+  <label>Answer:</label>
+  <textarea name="answer" rows="3" required></textarea>
+
+  <label>Tag:</label>
+  <input type="text" name="tag" placeholder="e.g., Python, History" />
+
+  <button type="submit">Save Flashcard</button>
+</form>
+{% endblock %}

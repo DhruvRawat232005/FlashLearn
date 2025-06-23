@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>📋 All Flashcards</h2>
+
+{% if cards %}
+  <div class="card-grid">
+    {% for card in cards %}
+      <div class="flashcard">
+        <h3>{{ card.question }}</h3>
+        <p><em>Tag:</em> {{ card.tag }}</p>
+        <p class="answer">{{ card.answer }}</p>
+        <div class="actions">
+          <a href="{{ url_for('edit', id=card.id) }}">✏️ Edit</a>
+          <a href="{{ url_for('delete', id=card.id) }}">🗑️ Delete</a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <p>No flashcards yet. <a href="{{ url_for('create') }}">Create one</a>!</p>
+{% endif %}
+{% endblock %}
